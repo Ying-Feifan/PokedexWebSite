@@ -10,7 +10,17 @@ export class BodyComponent implements OnInit {
 
   constructor() { }
 
+  public inputPokemonName: string;
+
   ngOnInit() {
+  }
+
+  writeInputPokemonName(){
+    
+  }
+
+  find(event) {
+    alert(this.inputPokemonName);
   }
 
 }
