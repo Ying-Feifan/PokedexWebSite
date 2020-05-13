@@ -1,18 +1,17 @@
 <div class="container mt-5">
-  <h1>Whichi pokemon you want know about?</h1>
-  <mat-form-field appearance="legacy" color="warn">
-    <mat-label>Name</mat-label>
-    <input matInput [(ngModel)]="inputPokemonName">
-  </mat-form-field>
-  <br>
-  <button mat-raised-button color="warn" (click)="find($event)">Find</button>
-  <br>
-
-  <h2 class="mt-5">
-    {{inputPokemonName}}
-  </h2>
-
-
-
-
+  <div class="question">
+    <h1>Whichi pokemon you want know about?</h1>
+    <mat-form-field appearance="legacy" color="warn">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="inputPokemonName">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="warn" (click)="findButton($event)">Find</button>
+  </div>
+  <div class="awnser mt-5">
+    <div *ngIf="isLoading">
+      <mat-spinner color="warn"></mat-spinner>
+    </div>
+    <h2 *ngIf="response != undefine">{{response.name}}</h2>
+  </div>
 </div>

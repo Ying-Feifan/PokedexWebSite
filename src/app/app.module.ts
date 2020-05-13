@@ -13,7 +13,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './models/angular-material.module';
 
 // two way data binding
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
+
+// HttpClient
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -29,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
 
   ],
   providers: [],
