@@ -5,15 +5,18 @@
       <mat-label>Name</mat-label>
       <input matInput [(ngModel)]="inputPokemonName">
     </mat-form-field>
-    <br>
-    <button mat-raised-button color="warn" (click)="findButton($event)">Find</button>
+    <button mat-raised-button color="warn" class="ml-3" (click)="findButton($event)">Find</button>
   </div>
   <div class="awnser mt-5">
     <div *ngIf="isLoading">
       <mat-spinner color="warn"></mat-spinner>
     </div>
     <div *ngIf="response && isWorking;">
-      <h2>{{response.name}}</h2>
+      <h2>{{response.name}} #{{response.info.id}}</h2>
+      Type: {{response.info.type}}
+      <br>
+      Description: {{response.info.description}}
+      <br>
     </div>
     <div *ngIf="response && !isWorking;">
       <h2>{{response.error}}</h2>
