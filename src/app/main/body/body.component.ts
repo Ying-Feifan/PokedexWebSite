@@ -10,22 +10,31 @@ import { Observable } from 'rxjs';
 })
 export class BodyComponent implements OnInit {
 
-  constructor(private requestService: RequestService) {}
+  constructor(private requestService: RequestService) { }
 
   public inputPokemonName: string;
   public isLoading: boolean;
+  public isWorking: boolean;
   public response: any;
 
-ngOnInit() {
-}
+  ngOnInit() {
+  }
 
-findButton(event) {
-  this.response = undefined;
-  this.isLoading = true;
-  this.requestService.pokemonInf(this.inputPokemonName).subscribe((data) => {
-    this.isLoading = false;
-    this.response = data;
-  });
-}
+  findButton(event) {
+    this.response = undefined;
+    this.isLoading = true;
+    this.requestService.pokemonInf(this.inputPokemonName).subscribe(
+      (data) => {
+        this.isLoading = false;
+        this.isWorking = true;
+        this.response = data;
+      },
+      (err) => {
+        this.isLoading = false;
+        this.isWorking = false;
+        console.log(err);
+        this.response = err;
+      });
+  }
 
 }

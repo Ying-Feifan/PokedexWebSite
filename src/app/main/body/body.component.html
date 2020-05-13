@@ -12,6 +12,12 @@
     <div *ngIf="isLoading">
       <mat-spinner color="warn"></mat-spinner>
     </div>
-    <h2 *ngIf="response != undefine">{{response.name}}</h2>
+    <div *ngIf="response && isWorking;">
+      <h2>{{response.name}}</h2>
+    </div>
+    <div *ngIf="response && !isWorking;">
+      <h2>{{response.error}}</h2>
+    </div>
+    
   </div>
 </div>
