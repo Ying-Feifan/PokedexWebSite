@@ -2,9 +2,9 @@
   <mat-toolbar color='warn'>
     <div class="logo col-8">Pokedex</div>
     <div class="menu col-4">
-      <button mat-button color="basic">Home</button>
-      <button mat-button color="basic">About</button>
-      <button mat-button color="basic">Feedback</button>
+      <button mat-button color="basic" (click)="navigateTo('home')">Home</button>
+      <button mat-button color="basic" (click)="navigateTo('about')">About</button>
+      <button mat-button color="basic" (click)="navigateTo('feedback')">Feedback</button>
     </div>
   </mat-toolbar>  
 
