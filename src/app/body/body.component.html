@@ -1,4 +1,5 @@
 <div class="container mr-auto ml-auto mt-5">
+  <div class="filter text-center">
   <h1>Which pokemon you want know about?</h1>
   <mat-form-field appearance="legacy" color="warn">
     <!-- auto complete -->
@@ -29,15 +30,15 @@
     Find
   </button>
   <!-- card -->
+</div>
 
   <div class="awnser mt-5">
-    <app-pokemon-card
-    *ngFor="let pokemon of listPokemon"
-    [pokemon]="pokemon"
-    (pokemonFound)="pokemonFound($event)"
-    ></app-pokemon-card>
-    <div *ngIf="isLoading">
-      <mat-spinner color="warn"></mat-spinner>
+    <div class="row">
+      <div class="col-lg-3 col-md-4 .col-sm-12" *ngFor="let pokemon of listPokemon">
+        <app-pokemon-card
+          [pokemon]="pokemon"
+        ></app-pokemon-card>
+      </div>
     </div>
   </div>
 </div>

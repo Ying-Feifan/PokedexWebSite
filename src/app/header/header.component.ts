@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,HostListener} from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -10,8 +10,10 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   constructor(private route: Router) { }
+  public isMobile: boolean;
 
   ngOnInit() {
+    this.isMobile = window.innerWidth <= 576 ? true : false;
   }
 
   navigateTo(choice) {
@@ -29,5 +31,9 @@ export class HeaderComponent implements OnInit {
         break;
       }
     }
+  }
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.isMobile = window.innerWidth <= 576 ? true : false;
   }
 }

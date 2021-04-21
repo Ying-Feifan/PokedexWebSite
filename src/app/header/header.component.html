@@ -1,11 +1,38 @@
-<div class="header">
-  <mat-toolbar color='warn'>
-    <div class="logo col-8">Pokedex</div>
-    <div class="menu col-4">
-      <button mat-button color="basic" (click)="navigateTo('home')">Home</button>
-      <button mat-button color="basic" (click)="navigateTo('about')">About</button>
-      <button mat-button color="basic" (click)="navigateTo('feedback')">Feedback</button>
+<div class="header d-flex">
+  <mat-toolbar color="warn">
+    <div class="logo mr-auto ml-5">Pokedex</div>
+    <div *ngIf="!isMobile; else mobile">
+      <div class="menu mr-5">
+        <button mat-button color="basic" (click)="navigateTo('home')">
+          Home
+        </button>
+        <button mat-button color="basic" (click)="navigateTo('about')">
+          About
+        </button>
+        <button mat-button color="basic" (click)="navigateTo('feedback')">
+          Feedback
+        </button>
+      </div>
     </div>
-  </mat-toolbar>  
-
+    <ng-template #mobile class="menu mr-5">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="navigateTo('home')"> 
+          <span>Home</span>
+        </button>
+        <button mat-menu-item (click)="navigateTo('about')"> 
+          <span>About</span>
+        </button>
+        <button mat-menu-item (click)="navigateTo('feedback')">
+          <span>Feedback</span>
+        </button>
+      </mat-menu>
+    </ng-template>
+  </mat-toolbar>
 </div>

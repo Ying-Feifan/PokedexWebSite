@@ -10,7 +10,6 @@ import { Observable } from "rxjs";
 export class PokemonCardComponent implements OnInit {
 
   @Input() pokemon:string;
-  @Output() pokemonFound = new EventEmitter<Number>();
 
   constructor(private requestService: RequestService) { }
   public response: any;
@@ -21,13 +20,11 @@ export class PokemonCardComponent implements OnInit {
     this.requestService.pokemonInf(this.pokemon).subscribe(
       (data) => {
         this.isLoaded =true;
-        this.pokemonFound.emit(1);
         this.response = data;
       },
       (err) => {
         this.isLoaded =true;
         this.notFound = true;
-        this.pokemonFound.emit(1);
         this.response = err;
       }
       );

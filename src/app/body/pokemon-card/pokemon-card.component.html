@@ -1,5 +1,5 @@
-<div *ngIf="isLoaded">
-  <div *ngIf="!notFound; else error">
+<div *ngIf="isLoaded" class="pokemon-card">
+  <div *ngIf="!notFound; else error" class="text-center mb-5">
     <img
       src="{{ response.sprites.front_default }}"
       alt="pokemon img"
