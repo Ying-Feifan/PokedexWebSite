@@ -6,12 +6,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RequestService {
 
-  private API = 'https://courses.cs.washington.edu/courses/cse154/webservices/pokedex/pokedex.php?pokemon=';
+  private API = 'https://pokeapi.co/api/v2/pokemon/';
 
   constructor(private http: HttpClient) { }
 
   pokemonInf(inputPokemonName) {
-    const APIComplet = this.API.concat(inputPokemonName);
-    return this.http.get(APIComplet);
+    const APIComplete = this.API.concat(inputPokemonName);
+    return this.http.get(APIComplete);
   }
 }

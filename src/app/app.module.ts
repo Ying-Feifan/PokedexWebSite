@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 // HttpClient
 import { HttpClientModule } from '@angular/common/http';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { PokemonCardComponent } from './body/pokemon-card/pokemon-card.component';
 
 
 
@@ -28,6 +29,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
     BodyComponent,
     AboutComponent,
     FeedbackComponent,
+    PokemonCardComponent,
   ],
   imports: [
     BrowserModule,

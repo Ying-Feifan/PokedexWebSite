@@ -1,0 +1,20 @@
+<div *ngIf="isLoaded">
+  <div *ngIf="!notFound; else error">
+    <img
+      src="{{ response.sprites.front_default }}"
+      alt="pokemon img"
+      height="120"
+    />
+    <br />
+    <h2>{{ response.name | titlecase }} #{{ response.id }}</h2>
+    Type: {{ response.types[0].type.name | titlecase }}
+    {{
+      (response.types.length == 2 ? " & " + response.types[1].type.name : "")
+        | titlecase
+    }}
+    <br />
+  </div>
+  <ng-template #error>
+    <p>{{ response.error }}</p>
+  </ng-template>
+</div>

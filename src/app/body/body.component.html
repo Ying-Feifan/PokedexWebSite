@@ -1,27 +1,43 @@
-<div class="container mt-5">
-  <div class="question">
-    <h1>Whichi pokemon you want know about?</h1>
-    <mat-form-field appearance="legacy" color="warn">
-      <mat-label>Name</mat-label>
-      <input matInput [(ngModel)]="inputPokemonName">
-    </mat-form-field>
-    <button mat-raised-button color="warn" class="ml-3" (click)="findButton($event)">Find</button>
-  </div>
+<div class="container mr-auto ml-auto mt-5">
+  <h1>Which pokemon you want know about?</h1>
+  <mat-form-field appearance="legacy" color="warn">
+    <!-- auto complete -->
+    <mat-label>Name</mat-label>
+    <input
+      type="text"
+      placeholder="Pick one"
+      aria-label="Number"
+      [matAutocomplete]="auto"
+      matInput
+      [(ngModel)]="inputPokemonName"
+      (ngModelChange)="keyDown($event)"
+    />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <!-- button -->
+  <button
+    mat-raised-button
+    color="warn"
+    class="ml-3"
+    (click)="findButton($event)"
+  >
+    Find
+  </button>
+  <!-- card -->
+
   <div class="awnser mt-5">
+    <app-pokemon-card
+    *ngFor="let pokemon of listPokemon"
+    [pokemon]="pokemon"
+    (pokemonFound)="pokemonFound($event)"
+    ></app-pokemon-card>
     <div *ngIf="isLoading">
       <mat-spinner color="warn"></mat-spinner>
     </div>
-    <div *ngIf="response && isWorking;">
-      <h2>{{response.name}} #{{response.info.id}}</h2>
-      Type: {{response.info.type}}
-      <br>
-      Description: {{response.info.description}}
-      <br>
-      <img src='/src/assets/Image/pokemon/1.png' alt='image'>
-    </div>
-    <div *ngIf="response && !isWorking;">
-      <h2>{{response.error}}</h2>
-    </div>
-    
   </div>
 </div>
