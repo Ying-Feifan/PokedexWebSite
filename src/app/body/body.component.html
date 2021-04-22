@@ -1,43 +1,45 @@
 <div class="container mr-auto ml-auto mt-5">
   <div class="filter text-center">
-  <h1>Which pokemon you want know about?</h1>
-  <mat-form-field appearance="legacy" color="warn">
-    <!-- auto complete -->
-    <mat-label>Name</mat-label>
-    <input
-      type="text"
-      placeholder="Pick one"
-      aria-label="Number"
-      [matAutocomplete]="auto"
-      matInput
-      [(ngModel)]="inputPokemonName"
-      (ngModelChange)="keyDown($event)"
-    />
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of options" [value]="option">
-        {{ option }}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+    <h1>Which pokemon you want know about?</h1>
+      <!-- auto complete -->
 
-  <!-- button -->
-  <button
-    mat-raised-button
-    color="warn"
-    class="ml-3"
-    (click)="findButton($event)"
-  >
-    Find
-  </button>
+        <mat-form-field appearance="legacy" color="warn" class="mr-4">
+          <mat-label>Name</mat-label>
+          <input type="text" placeholder="Pick one" aria-label="Number" [matAutocomplete]="auto" matInput
+            [(ngModel)]="inputPokemonName" (ngModelChange)="keyDown($event)" />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+      <!-- search -->
+
+        <mat-form-field appearance="legacy" color="warn" class="mr-3">
+          <mat-label>Type</mat-label>
+          <mat-select [(value)]="selectedType">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let type of typeOptions" [value]="type">
+              {{type | titlecase}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+      <!-- button -->
+
+        <button mat-raised-button color="warn" class="ml-3" (click)="findButton($event)">
+          Find
+        </button>
+    </div>
+
   <!-- card -->
-</div>
 
   <div class="awnser mt-5">
     <div class="row">
       <div class="col-lg-3 col-md-4 .col-sm-12" *ngFor="let pokemon of listPokemon">
-        <app-pokemon-card
-          [pokemon]="pokemon"
-        ></app-pokemon-card>
+        <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
       </div>
     </div>
   </div>

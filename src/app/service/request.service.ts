@@ -6,12 +6,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RequestService {
 
-  private API = 'https://pokeapi.co/api/v2/pokemon/';
-
+  
   constructor(private http: HttpClient) { }
+  
+  pokemonInf(inputPokemonName: string) {
+    const API = 'https://pokeapi.co/api/v2/pokemon/';
+    const APIComplete = API.concat(inputPokemonName);
+    return this.http.get(APIComplete);
+  }
 
-  pokemonInf(inputPokemonName) {
-    const APIComplete = this.API.concat(inputPokemonName);
+  typeInf(inputType: string) {
+    const API = 'https://pokeapi.co/api/v2/type/';
+    const APIComplete = API.concat(inputType);
     return this.http.get(APIComplete);
   }
 }
